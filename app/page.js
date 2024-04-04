@@ -9,6 +9,7 @@ export default function Home() {
 
       <div className={styles.center}>
         <Buttons/>
+        <img src="./pruebaImg.jpg"/>
       </div>
 
       
