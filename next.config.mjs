@@ -1,8 +1,4 @@
 /** @type {import('next').NextConfig} */
-// const nextConfig = {};
-
-// export default nextConfig;
-
 const cspHeader = `
     default-src 'self';
     script-src 'self' 'unsafe-eval' 'unsafe-inline';
@@ -15,19 +11,23 @@ const cspHeader = `
     frame-ancestors 'none';
     upgrade-insecure-requests;
 `
- 
-module.exports = {
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
+
+const nextConfig = {
+    async headers() {
+        return [
           {
-            key: 'Content-Security-Policy',
-            value: cspHeader.replace(/\n/g, ''),
+            source: '/(.*)',
+            headers: [
+              {
+                key: 'Content-Security-Policy',
+                value: cspHeader.replace(/\n/g, ''),
+              },
+            ],
           },
-        ],
+        ]
       },
-    ]
-  },
-}
+  }
+   
+  module.exports = nextConfig
+
+
